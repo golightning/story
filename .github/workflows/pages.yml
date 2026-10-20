@@ -1,0 +1,50 @@
+name: Pages
+
+# Deployt bei jedem Push auf main, der site/ ändert; manuell über Actions → Pages → Run workflow.
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Release-Check (keine Platzhalter, keine privaten Dateien)
+        run: |
+          set -e
+          if grep -q 'img/ph-' site/index.html; then
+            echo "::error::site/index.html bindet noch Platzhalterbilder ein. Erst die vier finalen Fotos integrieren."
+            exit 1
+          fi
+          mkdir -p _out
+          cp -R site/. _out/
+          rm -f _out/img/ph-*.svg
+          if find _out -iname '*.heic' -o -iname 'insiders.md' -o -iname '*prompt*' | grep -q .; then
+            echo "::error::Private Dateien im Output."
+            exit 1
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _out
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

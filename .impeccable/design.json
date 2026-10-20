@@ -1,0 +1,322 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T22:30:00Z",
+  "title": "Design System: Kurz was zeigen",
+  "extensions": {
+    "colorMeta": {
+      "night": {
+        "role": "neutral",
+        "displayName": "Villa Night",
+        "canonical": "oklch(14.2% 0.030 314.4)",
+        "tonalRamp": [
+          "#0d0910",
+          "#251f28",
+          "#3f3743",
+          "#5b5160",
+          "#786d7e",
+          "#9e94a3",
+          "#c3bac7",
+          "#ece5ef"
+        ]
+      },
+      "night-2": {
+        "role": "neutral",
+        "displayName": "Night Plum",
+        "canonical": "oklch(18.5% 0.044 315.0)",
+        "tonalRamp": [
+          "#0f0812",
+          "#271e2b",
+          "#413546",
+          "#5d4f64",
+          "#7b6a84",
+          "#a192a8",
+          "#c5b8cb",
+          "#eee4f3"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Warm White",
+        "canonical": "oklch(96.1% 0.011 71.9)",
+        "tonalRamp": [
+          "#0d0b09",
+          "#24211e",
+          "#3d3a36",
+          "#59544f",
+          "#76716a",
+          "#9c9792",
+          "#c1bdb8",
+          "#eae7e4"
+        ]
+      },
+      "ink-dim": {
+        "role": "neutral",
+        "displayName": "Dusk Mauve",
+        "canonical": "oklch(77.8% 0.021 330.7)",
+        "tonalRamp": [
+          "#0e0a0d",
+          "#251f25",
+          "#40383e",
+          "#5c525a",
+          "#796d77",
+          "#9f949d",
+          "#c3bac2",
+          "#ece5eb"
+        ]
+      },
+      "pink": {
+        "role": "primary",
+        "displayName": "Neon Pink",
+        "canonical": "oklch(70.6% 0.205 359.2)",
+        "tonalRamp": [
+          "#26000a",
+          "#4a0020",
+          "#710038",
+          "#9a0e53",
+          "#c5256f",
+          "#e76596",
+          "#ff96bb",
+          "#ffcbe6"
+        ]
+      },
+      "pink-fill": {
+        "role": "primary",
+        "displayName": "Studio Magenta",
+        "canonical": "oklch(56.2% 0.219 6.9)",
+        "tonalRamp": [
+          "#270005",
+          "#4c0017",
+          "#73002d",
+          "#9d0a45",
+          "#c9235e",
+          "#ea6587",
+          "#ff96af",
+          "#ffcbdc"
+        ]
+      },
+      "broadcast-white": {
+        "role": "neutral",
+        "displayName": "Broadcast White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#262626",
+          "#3b3b3b",
+          "#555555",
+          "#717171",
+          "#8e8e8e",
+          "#b0b0b0",
+          "#d1d1d1",
+          "#ffffff"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The opening line only."
+      },
+      "display-punch": {
+        "displayName": "Display Punch",
+        "purpose": "The false-ending pair; largest type on the page."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Mid-story statements: the time gag and the finale title."
+      },
+      "lt-name": {
+        "displayName": "Lower-third Name",
+        "purpose": "Uppercase expanded name inside the pink name bar only."
+      },
+      "lt-sub": {
+        "displayName": "Lower-third Sub",
+        "purpose": "Sentence-case line inside the white sub bar only."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Flashback lines and prose, 30-34ch; quiet variant 1rem in Dusk Mauve."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Expanded caps for the show bug, location supers and flashback tag; never below 14px."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Press nudge on lower-third links (transform .25s)."
+      },
+      {
+        "name": "lt-wipe",
+        "value": "clip-path inset(0 100% 0 0) -> inset(0); 0.55s expo.out; stagger 0.12s",
+        "purpose": "Lower-third bars wipe in from the left on enter and reverse on scroll-back; intro plays once after 1.1s."
+      },
+      {
+        "name": "bug-fade",
+        "value": "opacity .2s ease-out",
+        "purpose": "Show bug steps aside while the contact list is under it."
+      },
+      {
+        "name": "photo-open",
+        "value": "scrubbed clip-path inset(16% 18%) -> 0 with scale 1.18 -> 1, power2.out",
+        "purpose": "First photo window opens on the first swipe."
+      },
+      {
+        "name": "photo-blend",
+        "value": "scrubbed clip-path inset(0 0 0 64%) -> 0, power1.out",
+        "purpose": "TV-style wipe-open of a photo from the right."
+      },
+      {
+        "name": "dramatic-zoom",
+        "value": "pinned, scrub 0.5; scale 3.2 (face) -> 1.7 (pair) -> 1 (full), power2.inOut",
+        "purpose": "The stadium reveal; super fades in at the end."
+      },
+      {
+        "name": "punch-pop",
+        "value": "scale 1.5 rotate -8deg -> scale 1 rotate -3deg, 0.5s back.out(2)",
+        "purpose": "The 'Fast.' punch landing."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce -> no transitions, all graphics static and visible",
+        "purpose": "Motion is never required to read the story."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "min-width: 700px"
+      },
+      {
+        "name": "short-landscape",
+        "value": "max-height: 520px and orientation: landscape"
+      },
+      {
+        "name": "pinning",
+        "value": "min-height: 521px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Lower-third",
+      "kind": "custom",
+      "refersTo": "lower-third-name",
+      "description": "The signature graphic: pink name bar over an inset white sub bar, square and flat.",
+      "html": "<p class=\"ds-lt\"><span class=\"ds-lt__name\">Tolga</span><span class=\"ds-lt__sub\">hatte Langeweile.</span></p>",
+      "css": ".ds-lt { display: inline-flex; flex-direction: column; align-items: flex-start; margin: 0; font-family: Archivo, system-ui, sans-serif; } .ds-lt__name, .ds-lt__sub { display: block; padding: 9px 16px 8px; } .ds-lt__name { background: var(--pink-fill, #d4105f); color: #fff; font-size: 1.25rem; line-height: 1.1; font-weight: 850; font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; } .ds-lt__sub { margin-left: 14px; background: var(--ink, #f7f1ea); color: var(--night, #0e0612); font-size: 1rem; line-height: 1.25; font-weight: 600; }"
+    },
+    {
+      "name": "Lower-third Link",
+      "kind": "button",
+      "refersTo": "lower-third-link",
+      "description": "The lower-third as a contact control in the finale staircase.",
+      "html": "<a class=\"ds-lt-link\" href=\"#\"><span class=\"ds-lt-link__name\">WhatsApp</span><span class=\"ds-lt-link__sub\">Auch für Bilder von dir.</span></a>",
+      "css": ".ds-lt-link { display: inline-flex; flex-direction: column; align-items: flex-start; min-height: 44px; color: inherit; text-decoration: none; font-family: Archivo, system-ui, sans-serif; cursor: pointer; transition: transform .25s cubic-bezier(.16, 1, .3, 1); } .ds-lt-link__name, .ds-lt-link__sub { display: block; padding: 9px 16px 8px; } .ds-lt-link__name { background: var(--pink-fill, #d4105f); color: #fff; font-size: 1.25rem; line-height: 1.1; font-weight: 850; font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; } .ds-lt-link__sub { margin-left: 14px; background: var(--ink, #f7f1ea); color: var(--night, #0e0612); font-size: 1rem; line-height: 1.25; font-weight: 600; } @media (hover: hover) { .ds-lt-link:hover .ds-lt-link__name { background: #b80b50; } } .ds-lt-link:active { transform: translateX(4px); } .ds-lt-link:focus-visible { outline: 3px solid var(--pink, #ff5c9d); outline-offset: 3px; } @media (prefers-reduced-motion: reduce) { .ds-lt-link { transition: none; } }"
+    },
+    {
+      "name": "Mood Vote",
+      "kind": "custom",
+      "refersTo": "mood-vote",
+      "description": "Televoting 1–10 under the finale title; each tile is a WhatsApp link with the value prefilled.",
+      "html": "<ol class=\"ds-vote\"><li><a href=\"#\">1</a></li><li><a href=\"#\">2</a></li><li><a href=\"#\">3</a></li><li><a href=\"#\">4</a></li><li><a href=\"#\">5</a></li><li><a href=\"#\">6</a></li><li><a href=\"#\">7</a></li><li><a href=\"#\">8</a></li><li><a href=\"#\">9</a></li><li><a href=\"#\">10</a></li></ol>",
+      "css": ".ds-vote { list-style: none; margin: 0; padding: 0; max-width: 340px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; font-family: Archivo, system-ui, sans-serif; } .ds-vote a { display: grid; place-items: center; min-height: 52px; border: 1.5px solid var(--ink-dim, #bfb2bd); color: var(--ink, #f7f1ea); text-decoration: none; font-size: 1.25rem; font-weight: 850; font-stretch: 125%; font-variant-numeric: tabular-nums; transition: background-color .2s cubic-bezier(.16, 1, .3, 1), border-color .2s cubic-bezier(.16, 1, .3, 1); } .ds-vote a:hover, .ds-vote a:active { background: var(--pink-fill, #d4105f); border-color: var(--pink-fill, #d4105f); color: #fff; } .ds-vote a:focus-visible { outline: 3px solid var(--pink, #ff5c9d); outline-offset: 3px; }"
+    },
+    {
+      "name": "Show Bug",
+      "kind": "custom",
+      "refersTo": "show-bug",
+      "description": "Small fixed channel bug with a pink live dot; steps aside over controls.",
+      "html": "<div class=\"ds-bug\" aria-hidden=\"true\"><span class=\"ds-bug__dot\"></span><span>Folge 1</span></div>",
+      "css": ".ds-bug { display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px 6px 9px; background: var(--night, #0e0612); color: var(--ink, #f7f1ea); font-family: Archivo, system-ui, sans-serif; font-size: .875rem; font-weight: 800; font-stretch: 125%; letter-spacing: .06em; text-transform: uppercase; transition: opacity .2s ease-out; } .ds-bug__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink, #ff5c9d); }"
+    },
+    {
+      "name": "Location Super",
+      "kind": "custom",
+      "refersTo": "location-super",
+      "description": "Scene location inside a photo, top-left, on a translucent night plate with a pink tick.",
+      "html": "<span class=\"ds-super\">Therme, abends</span>",
+      "css": ".ds-super { display: inline-flex; align-items: center; gap: 8px; padding: 5px 10px 4px 8px; background: rgb(14 6 18 / .78); color: var(--ink, #f7f1ea); font-family: Archivo, system-ui, sans-serif; font-size: .875rem; font-weight: 800; font-stretch: 125%; letter-spacing: .06em; text-transform: uppercase; } .ds-super::before { content: \"\"; width: 3px; height: 14px; background: var(--pink, #ff5c9d); }"
+    },
+    {
+      "name": "Flashback Tag",
+      "kind": "chip",
+      "refersTo": "flashback-tag",
+      "description": "Inline pink outline insert that opens a flashback sentence; lives inside the line.",
+      "html": "<p class=\"ds-flashback\"><span class=\"ds-flashback__tag\">Rückblick</span> Erstes Date: Standstreifen.</p>",
+      "css": ".ds-flashback { margin: 0; max-width: 34ch; color: var(--ink, #f7f1ea); font-family: Archivo, system-ui, sans-serif; font-size: 1.0625rem; line-height: 1.4; } .ds-flashback__tag { display: inline-block; margin-right: 6px; padding: 2px 8px 1px; border: 1.5px solid var(--pink, #ff5c9d); color: var(--pink, #ff5c9d); font-size: .875rem; font-weight: 800; font-stretch: 125%; letter-spacing: .05em; text-transform: uppercase; vertical-align: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary utility action (copy number); square, stroked, never pink-filled.",
+      "html": "<button class=\"ds-btn-outline\" type=\"button\">Nummer kopieren</button>",
+      "css": ".ds-btn-outline { min-height: 44px; padding: 0 14px; border: 1.5px solid var(--ink-dim, #bfb2bd); border-radius: 0; background: transparent; color: var(--ink, #f7f1ea); font-family: Archivo, system-ui, sans-serif; font-size: .9375rem; font-weight: 700; cursor: pointer; } .ds-btn-outline:active { transform: translateY(1px); } .ds-btn-outline:focus-visible { outline: 3px solid var(--pink, #ff5c9d); outline-offset: 4px; }"
+    },
+    {
+      "name": "Photo Shot with Lower-third",
+      "kind": "card",
+      "refersTo": "photo-shot",
+      "description": "4:5 photo frame with a super inside and a lower-third pulled 28px up into its lower edge.",
+      "html": "<div class=\"ds-shotwrap\"><figure class=\"ds-shot\"><figcaption class=\"ds-shot__super\">Shishabar</figcaption></figure><p class=\"ds-shot__lt\"><span class=\"ds-shot__name\">Türkin.</span><span class=\"ds-shot__sub\">Blonde Edition.</span></p></div>",
+      "css": ".ds-shotwrap { max-width: 320px; font-family: Archivo, system-ui, sans-serif; } .ds-shot { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; background: var(--night-2, #1a0c20); } .ds-shot__super { position: absolute; left: 24px; top: 18px; display: flex; align-items: center; gap: 8px; padding: 5px 10px 4px 8px; background: rgb(14 6 18 / .78); color: var(--ink, #f7f1ea); font-size: .875rem; font-weight: 800; font-stretch: 125%; letter-spacing: .06em; text-transform: uppercase; } .ds-shot__super::before { content: \"\"; width: 3px; height: 14px; background: var(--pink, #ff5c9d); } .ds-shot__lt { position: relative; z-index: 2; display: inline-flex; flex-direction: column; align-items: flex-start; margin: -28px 0 0 24px; } .ds-shot__name, .ds-shot__sub { display: block; padding: 9px 16px 8px; } .ds-shot__name { background: var(--pink-fill, #d4105f); color: #fff; font-size: 1.25rem; line-height: 1.1; font-weight: 850; font-stretch: 125%; text-transform: uppercase; } .ds-shot__sub { margin-left: 14px; background: var(--ink, #f7f1ea); color: var(--night, #0e0612); font-size: 1rem; font-weight: 600; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Villa at Night, On Air",
+    "overview": "The page is one episode of a dating show that only two people watch. Everything visual is broadcast graphics laid over a dark villa ground: lower-thirds introduce people and options, location supers set scenes inside the photos, a small show bug sits in the corner, and the photos carry the feeling. The graphics are flat, square and loud in exactly one hue; the prose between them is short, warm white and plain.\n\nDensity is low and the rhythm is televisual: one beat per viewport, large dead air between beats (120px beat padding, a 42svh gap between \"Das war's.\" and \"Fast\"), and a single centred story column capped at 560px that never widens, even on desktop. Motion is the director: graphics wipe in from the left like a vision mixer, photos open from a crop, and the stadium shot is a scroll-scrubbed zoom. With reduced motion or without JS the same graphics simply stand there, complete.\n\nThe world refuses hearts, glitter and script logos (contract), and it refuses the default dark scrollytelling page of centred white lines over full-bleed photos: text here is left-set and graphics are hard-edged bars, not floating captions.",
+    "keyCharacteristics": [
+      "Near-black violet ground, warm white type, one pink hue in two tones.",
+      "Lower-thirds (pink name bar over a white sub bar, inset 14px) are the only graphic language.",
+      "Archivo variable: expanded heavy caps for on-air graphics, normal width for prose.",
+      "Square, flat, shadowless; depth comes only from overlap and the photo.",
+      "One 560px story column, left-aligned from a 24px gutter."
+    ],
+    "rules": [
+      {
+        "name": "The One Hue, Two Tones Rule",
+        "body": "Pink is the only chromatic colour. Use the light tone (`pink`) when pink is the text or line on night; use the deep tone (`pink-fill`) when pink is a surface under white text. Never swap them: the light tone cannot carry white text and the deep tone does not read as text on night.",
+        "section": "colors"
+      },
+      {
+        "name": "The Plate Rule",
+        "body": "Anything on air sits on a plate: a solid bar, the night plate of the bug, or the 78% night plate of a super over a photo. Graphic text never floats directly on an image.",
+        "section": "colors"
+      },
+      {
+        "name": "The Width Is the Voice Rule",
+        "body": "On-air graphics are set at full expansion (wdth 125) in caps; spoken lines stay at wdth 100 to 112 in sentence case. Don't set prose expanded or graphics condensed.",
+        "section": "typography"
+      },
+      {
+        "name": "The Short Line Rule",
+        "body": "Text measures stay short (30–34ch for prose, balanced wrap for display and headline). The photos carry the feeling; type never runs a paragraph across the column.",
+        "section": "typography"
+      },
+      {
+        "name": "The Broadcast Is Flat Rule",
+        "body": "No box-shadows, glows or blur on any graphic. If something needs to separate from the image, give it a plate or overlap it, never a shadow.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** introduce every person, option and punchline that is \"on screen\" as a lower-third: pink name bar over a white sub bar, inset 14px, square.",
+      "**Do** use `pink` for pink text and lines on night, and `pink-fill` only as a surface under white text.",
+      "**Do** keep everything in the single 560px column, left-aligned to the 24px gutter.",
+      "**Do** set graphic labels in Archivo at wdth 125, uppercase, at least 14px; prose at wdth 100.",
+      "**Do** put any text over a photo on a night plate.",
+      "**Do** make every motion optional: wipes, crops and zooms must leave a complete static state under reduced motion or without JS.",
+      "**Do** keep controls at least 44px tall with the 3px pink focus ring."
+    ],
+    "donts": [
+      "**Don't** add hearts, glitter or a script logo.",
+      "**Don't** introduce a second accent hue or a third pink tone outside state shades.",
+      "**Don't** round corners or add shadows; the bug's live dot is the only circle.",
+      "**Don't** centre white lines over full-bleed photos; text sits left in the column or on a plate.",
+      "**Don't** widen the story column on large screens; derive, don't redesign.",
+      "**Don't** let a fixed graphic cover a control; the show bug steps aside when the contact list arrives."
+    ]
+  }
+}

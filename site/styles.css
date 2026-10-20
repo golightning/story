@@ -1,0 +1,534 @@
+@font-face {
+  font-family: "Archivo";
+  src: url("fonts/archivo-var.woff2") format("woff2-variations"), url("fonts/archivo-var.woff2") format("woff2");
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --night: #0e0612;
+  --night-2: #1a0c20;
+  --ink: #f7f1ea;
+  --ink-dim: #bfb2bd;
+  --pink: #ff5c9d;       /* Akzent als Text auf Nacht */
+  --pink-fill: #d4105f;  /* Akzent als Fläche unter weißer Schrift */
+  --gutter: max(24px, env(safe-area-inset-left), env(safe-area-inset-right));
+  --stage: 560px;
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  background: var(--night);
+  scrollbar-color: var(--pink-fill) var(--night);
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--night);
+  color: var(--ink);
+  font-family: "Archivo", system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+::selection { background: var(--pink-fill); color: #fff; }
+
+:focus-visible {
+  outline: 3px solid var(--pink);
+  outline-offset: 4px;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+p, h1, h2, figure { margin: 0; }
+
+/* ── Senderlogo-Ecke ───────────────────────────────────────── */
+.bug {
+  position: fixed;
+  z-index: 20;
+  top: max(14px, env(safe-area-inset-top));
+  /* hängt an der oberen rechten Ecke der Story-Spalte, nicht am Fensterrand */
+  right: max(14px, env(safe-area-inset-right), calc((100vw - var(--stage)) / 2 + 14px));
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 9px;
+  background: var(--night);
+  color: var(--ink);
+  font-size: .875rem;
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity .2s ease-out;
+}
+
+.bug.is-off { opacity: 0; }
+
+.bug__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+/* ── Bauchbinde (Lower Third) ──────────────────────────────── */
+.lt {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.lt__name,
+.lt__sub {
+  display: block;
+  max-width: 100%;
+  padding: 9px 16px 8px;
+}
+
+.lt__name {
+  background: var(--pink-fill);
+  color: #fff;
+  font-size: 1.25rem;
+  line-height: 1.1;
+  font-weight: 850;
+  font-stretch: 125%;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+}
+
+.lt__sub {
+  margin-left: 14px;
+  background: var(--ink);
+  color: var(--night);
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 600;
+}
+
+/* ── Szenen-Grundgerüst ────────────────────────────────────── */
+main {
+  width: 100%;
+  max-width: var(--stage);
+  margin: 0 auto;
+}
+
+.intro {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: calc(max(14px, env(safe-area-inset-top)) + 96px) var(--gutter) 40px;
+}
+
+.intro__title {
+  font-size: clamp(2.75rem, 13.5vw, 4.75rem);
+  line-height: .96;
+  font-weight: 850;
+  font-stretch: 112%;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+  margin-top: 6svh;
+}
+
+.intro__foot {
+  display: grid;
+  gap: 22px;
+  justify-items: start;
+  margin-top: 56px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--ink-dim);
+  max-width: 30ch;
+}
+
+.scene { padding: 72px 0 0; }
+
+.flashback {
+  padding: 0 var(--gutter);
+  margin-bottom: 20px;
+  font-size: 1.0625rem;
+  line-height: 1.4;
+  max-width: 34ch;
+}
+
+.flashback__tag {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 2px 8px 1px;
+  border: 1.5px solid var(--pink);
+  color: var(--pink);
+  font-size: .875rem;
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  vertical-align: 2px;
+}
+
+.shot {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+  background: var(--night-2);
+}
+
+.shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--fx, 50%) var(--fy, 35%);
+}
+
+/* Ortseinblendung im Bild, oben links, außerhalb der Gesichter */
+.super {
+  position: absolute;
+  left: var(--gutter);
+  top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px 4px 8px;
+  background: rgb(14 6 18 / .78);
+  font-size: .875rem;
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.super::before {
+  content: "";
+  width: 3px;
+  height: 14px;
+  background: var(--pink);
+}
+
+.lt--her {
+  position: relative;
+  z-index: 2;
+  margin: -28px 0 0 var(--gutter);
+}
+
+/* ── Zeitaufwand-Gag ───────────────────────────────────────── */
+.timegag {
+  padding: 120px var(--gutter) 48px;
+}
+
+.timegag__stage {
+  display: grid;
+  align-content: center;
+  gap: 28px;
+}
+
+.timegag__line,
+.timegag__punch {
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  line-height: 1.08;
+  font-weight: 800;
+  font-stretch: 106%;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+}
+
+.timegag__five {
+  text-decoration: line-through;
+  text-decoration-color: var(--pink);
+  text-decoration-thickness: .12em;
+  color: var(--ink-dim);
+}
+
+.timegag__twenty { color: var(--pink); }
+
+.timegag__punch { color: var(--ink); }
+
+/* ── Stadion-Enthüllung ────────────────────────────────────── */
+.reveal { padding-top: 72px; }
+
+.reveal__stage { position: relative; }
+
+.shot--reveal img { will-change: transform; }
+
+/* ── Falsches Ende ─────────────────────────────────────────── */
+.fakeout {
+  overflow-x: clip;
+  padding: 120px var(--gutter) 64px;
+  display: grid;
+  gap: 42svh;
+}
+
+.fakeout__end,
+.fakeout__almost {
+  font-size: clamp(3rem, 16vw, 5.5rem);
+  line-height: .95;
+  font-weight: 850;
+  font-stretch: 112%;
+  letter-spacing: -.03em;
+}
+
+.fakeout__almost {
+  color: var(--pink);
+  justify-self: end;
+}
+
+/* ── Kontakt-Finale ────────────────────────────────────────── */
+.finale {
+  padding: 88px var(--gutter) calc(64px + env(safe-area-inset-bottom));
+}
+
+.finale__title {
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  line-height: 1.08;
+  font-weight: 800;
+  font-stretch: 106%;
+  letter-spacing: -.015em;
+  text-wrap: balance;
+  margin-bottom: 40px;
+}
+
+/* Televoting: seine tägliche Frage, jede Zahl öffnet WhatsApp mit vorausgefülltem Wert */
+.vote { margin-bottom: 56px; }
+
+.vote__scale {
+  list-style: none;
+  margin: 16px 0 0 14px;
+  padding: 0;
+  max-width: 340px;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.vote__scale a {
+  display: grid;
+  place-items: center;
+  min-height: 52px;
+  border: 1.5px solid var(--ink-dim);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 1.25rem;
+  font-weight: 850;
+  font-stretch: 125%;
+  font-variant-numeric: tabular-nums;
+  transition: background-color .2s var(--ease-out), border-color .2s var(--ease-out);
+}
+
+.vote__scale a:active {
+  background: var(--pink-fill);
+  border-color: var(--pink-fill);
+  color: #fff;
+}
+
+@media (hover: hover) {
+  .vote__scale a:hover {
+    background: var(--pink-fill);
+    border-color: var(--pink-fill);
+    color: #fff;
+  }
+}
+
+.vote__scale a:focus-visible { outline-offset: 3px; }
+
+.vote__note {
+  margin: 12px 0 0 14px;
+  color: var(--ink-dim);
+  font-size: 1rem;
+}
+
+.lines {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+
+/* Treppe: jede Bauchbinde rückt etwas weiter ein, die Liste eskaliert */
+.lines > li { padding-left: calc(var(--i, 0) * 7px); }
+.lines > li:nth-child(1) { --i: 0; }
+.lines > li:nth-child(2) { --i: 1; }
+.lines > li:nth-child(3) { --i: 2; }
+.lines > li:nth-child(4) { --i: 3; }
+.lines > li:nth-child(5) { --i: 4; }
+.lines > li:nth-child(6) { --i: 5; }
+.lines > li:nth-child(7) { --i: 6; }
+.lines > li:nth-child(8) { --i: 7; }
+
+.lt--link,
+.lt--fake {
+  min-height: 44px;
+  cursor: pointer;
+  transition: transform .25s var(--ease-out);
+}
+
+.lt--link:active,
+.lt--fake:active { transform: translateX(4px); }
+
+@media (hover: hover) {
+  .lt--link:hover .lt__name,
+  button.lt--fake:hover .lt__name { filter: brightness(.86); }
+}
+
+.lt--link:focus-visible,
+.lt--fake:focus-visible { outline-offset: 3px; }
+
+/* Ohne JS sind Fax und Brieftaube nur Text, keine Schein-Buttons */
+div.lt--fake { cursor: default; }
+
+button.lt--fake {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+}
+
+.lt__reply {
+  display: block;
+  min-height: 0;
+  margin: 8px 0 0 14px;
+  color: var(--pink);
+  font-weight: 700;
+}
+
+.lt__reply:empty { display: none; }
+
+.copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  margin: 10px 0 0 14px;
+}
+
+.copy__number {
+  font-size: 1rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-dim);
+  user-select: all;
+  -webkit-user-select: all;
+}
+
+.copy__btn {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1.5px solid var(--ink-dim);
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.copy__btn:active { transform: translateY(1px); }
+
+.copy__status {
+  flex-basis: 100%;
+  font-size: 1rem;
+  color: var(--pink);
+}
+
+.copy__status:empty { display: none; }
+
+.signoff {
+  margin-top: 96px;
+  color: var(--ink-dim);
+  font-size: 1rem;
+}
+
+/* ── Kurze Ansichten (Querformat): Bühne auf Bildschirmhöhe begrenzen ── */
+@media (max-height: 520px) and (orientation: landscape) {
+  .intro { min-height: auto; padding-top: 72px; }
+  /* 4:5 bleibt erhalten: Höhe vorgeben, Breite folgt, zentriert */
+  .shot { height: 86svh; width: auto; margin-inline: auto; }
+  .shot--closing { height: 70svh; }
+  .fakeout { gap: 40svh; }
+}
+
+/* ── Ab Tablet: abgeleitet, Bühne bleibt begrenzt ──────────── */
+@media (min-width: 700px) {
+  .intro { padding-top: 120px; }
+  .scene, .reveal { padding-top: 112px; }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lt--link, .lt--fake, .vote__scale a { transition: none; }
+}
+
+/* ── Nur mit aktiver Bewegung (von main.js gesetzt) ────────── */
+.is-motion .timegag__five {
+  position: relative;
+  text-decoration: none;
+}
+
+.is-motion .timegag__five::after {
+  content: "";
+  position: absolute;
+  left: -.06em;
+  right: -.06em;
+  top: 54%;
+  height: .12em;
+  background: var(--pink);
+  transform: scaleX(var(--strike, 1));
+  transform-origin: left center;
+}
+
+/* „zwanzig“ wird als Korrektur über „fünf“ gesetzt, rechtsbündig, damit es nie über den Rand ragt */
+.timegag__fix { white-space: nowrap; }
+
+.timegag__br { display: none; }
+
+.is-motion .timegag__br { display: inline; }
+
+.is-motion .timegag__line { line-height: 1.5; }
+
+.is-motion .timegag__fix { position: relative; }
+
+/* „fünf“ bleibt bis zum Durchstreichen voll lesbar, sonst verrät es die Pointe */
+.is-motion .timegag__five { color: inherit; }
+
+/* Durch den Umbruch steht „fünf“ immer am Zeilenanfang: linksbündig darüber bleibt in der Satzkante */
+.is-motion .timegag__twenty {
+  position: absolute;
+  left: 0;
+  bottom: 78%;
+  font-size: .72em;
+  transform: rotate(-5deg);
+  transform-origin: left bottom;
+}
+
+.is-pinning .timegag { padding-top: 0; padding-bottom: 0; }
+.is-pinning .timegag__stage { min-height: 100svh; }
+
+/* Stadion-Bühne deckt beim Pinnen den ganzen Screen ab, die vorige Szene ist dann weg */
+.is-pinning .reveal__stage {
+  min-height: 100svh;
+  display: grid;
+  align-content: center;
+  background: var(--night);
+}

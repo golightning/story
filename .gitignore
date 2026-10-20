@@ -1,0 +1,8 @@
+.DS_Store
+.impeccable/review/
+.impeccable/answer.txt
+node_modules/
+
+# private Referenzfotos und verworfene Bildvarianten, für die Seite nicht nötig
+bilder/
+production/candidates/

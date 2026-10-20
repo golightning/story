@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  html,body{margin:0;height:100%;background:#0c0e11;color:#f2f0ea;font-family:"DIN Alternate","Arial Narrow",system-ui,sans-serif}
+  .road{position:relative;width:390px;height:844px;overflow:hidden;background:
+    radial-gradient(120% 60% at 50% 115%,#1b1f25 0%,#0c0e11 60%)}
+  .lane{position:absolute;left:56px;top:0;bottom:0;width:6px;background:repeating-linear-gradient(#f2f0ea 0 48px,transparent 48px 96px);opacity:.9}
+  .km{position:absolute;left:30px;top:108px;display:flex;align-items:center;gap:10px}
+  .post{width:14px;height:44px;background:#f2f0ea;border-radius:2px;position:relative}
+  .post:after{content:"";position:absolute;left:3px;right:3px;top:8px;height:12px;background:#f5b400}
+  .km span{font-size:15px;letter-spacing:.08em;color:#f5b400;font-weight:700}
+  h1{position:absolute;left:84px;right:20px;top:250px;margin:0;font-size:58px;line-height:.98;font-weight:700;letter-spacing:-.01em}
+  .hint{position:absolute;left:84px;bottom:58px;font-size:15px;color:#9aa0a8;letter-spacing:.04em}
+</style></head><body>
+<div class="road">
+  <div class="lane"></div>
+  <div class="km"><div class="post"></div><span>km 0,0</span></div>
+  <h1>Ich muss dir kurz was zeigen.</h1>
+  <div class="hint">↓ weiterfahren</div>
+</div>
+</body></html>

@@ -1,0 +1,45 @@
+schema: spec-driven
+
+context: |
+  Sprache der Dokumentation und Website: Deutsch.
+  Neues Projekt: eine statische persönliche Scroll-Story von Tolga für seine Freundin.
+  Voraussichtlich 99 Prozent Smartphone-Nutzung. Mobile First ist zwingend.
+  Ton: cool, trocken, leicht absurd und persönlich. Kein Kitsch oder Gefühlsvortrag.
+  Paarbilder sind ausdrücklich gewünscht: Strand, Therme, Shishabar, FC-Barcelona-Stadion.
+  Natürliche Nähe ist erlaubt; die Bilder sollen wie glaubwürdige gemeinsame Erlebnisse wirken.
+  Verbindliche Paardynamik in allen vier Bildern: Tolga männlich, ruhig und selbstsicher;
+  seine Freundin feminin, entspannt und vertraut an seiner Seite.
+  Diese Wirkung über Haltung, Styling und natürliche Nähe erzeugen, bei unveränderter Identität
+  und plausiblen Körperproportionen gemäß Referenzen. Auf der Website nicht erklären.
+  Aktuelle explizite Körpergrößen: Tolga 187 cm, seine Freundin 177 cm, Unterschied 10 cm.
+  Für alle Bildszenen diese Angaben verwenden; sichtbare Höhe passend zu Pose,
+  Schuhen und Perspektive darstellen. Sitz- und Poolszenen nicht auf einen festen Kopfabstand zwingen.
+  Visueller Ablauf statt klassischer Website mit Header, Navigation und Footer.
+  Hauptbedienung: natives vertikales Scrollen, ergänzt um dezente Scrollanimationen.
+  Kein Scroll-Hijacking. Alle Inhalte müssen auch ohne Animationen erreichbar bleiben.
+  Dramatischer Einstieg, Paarfotostrecke, Scroll-Enthüllung, Zeitaufwand-Gag,
+  falsches Ende und eine eskalierende Liste echter und absurder Kontaktwege.
+  Keine schwebenden Köpfe, Paar-Minispiele, Beziehungstests oder Beweissammlungen.
+  Kein Backend, keine Konten, keine Formulare und keine Laufzeit-KI erforderlich.
+  Claude Code ist als Umsetzungstool vorgesehen. impeccable/taste sind laut Nutzer installiert.
+  Bildreferenzen und echte Kontaktdaten sind noch nicht für dieses Projekt zusammengestellt.
+  Persönliche Insider und ihre redaktionelle Auswahl stehen in insiders.md im Change.
+  Vorgesehene kurze Anspielungen: sen yapamasin, erstes Date mit ADAC, Guten-Morgen/Gute-Nacht-Gag.
+  Ebenfalls zum Einbauen ausgewählt: WhatsApp-Zeile Auch für Bilder von dir.,
+  natürlich sichtbarer Bizeps im Strandfoto und Bildlegende Türkin. Blonde Edition. beim Shishabar-Foto.
+  Ihre familiäre Situation ist nur Hintergrund und kein Website-Inhalt.
+  Keine Vorwürfe wegen fehlender Zeit, Ghosting oder ausbleibender Rückrufe.
+
+rules:
+  proposal:
+    - Mobile First ausdrücklich als verbindliches Produktziel nennen.
+  specs:
+    - Observable Anforderungen mit SHALL/MUST und mindestens einem WHEN/THEN-Szenario formulieren.
+    - Mobile Darstellung und Reduced Motion als prüfbare Kriterien festhalten.
+  design:
+    - Nutzerentscheidungen von zusätzlichen Implementierungsentscheidungen unterscheiden.
+    - Desktop erst aus der funktionierenden mobilen Gestaltung ableiten.
+  tasks:
+    - Jede Aufgabe enthält eine konkrete Prüfung oder ein überprüfbares Ergebnis.
+    - Fehlende Bilder und Kontakte nicht erfinden oder als erledigt markieren.
+
